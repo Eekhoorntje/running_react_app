@@ -1,18 +1,27 @@
     // src/App.js
 
     import React, {Component} from 'react';
+    import Activities from './components/activities';
 
     class App extends Component {
+
+      state = {
+        activities: []
+      }
+
+      componentDidMount() {
+        fetch('http://www.andygoesrunning.com:8080/garmin-activities')
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({ activities: data })
+        })
+        .catch(console.log)
+      }
+
       render () {
         return (
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Steve Jobs</h5>
-              <h6 class="card-subtitle mb-2 text-muted">steve@apple.com</h6>
-              <p class="card-text">Stay Hungry, Stay Foolish</p>
-            </div>
-          </div>
-        );
+          <Activities activities={this.state.activities}/>
+        )
       }
     }
 
