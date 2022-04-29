@@ -6,7 +6,7 @@
       return (
         <div>
           <center><h1>Activity List</h1></center>
-          {activities.map((activity) => (
+          {Activities.map((activity) => (
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">{activity.Title}</h5>
